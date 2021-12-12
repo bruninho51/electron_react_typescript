@@ -1,0 +1,25 @@
+import path from 'path';
+import { nativeImage as NativeImage } from 'electron';
+import { AbstractWindow } from '../contracts/abstract-window';
+
+export default class <%=  name.charAt(0).toUpperCase() + name.slice(1) %>Window extends AbstractWindow {
+  constructor () {
+    super({
+      rendererName: '<%= name %>',
+      browserWindowOptions: {
+        width: 400,
+        height: 400,
+        icon: NativeImage.createFromPath(path.join(__dirname, '..', 'assets', 'icon.png')),
+        webPreferences: {
+          nodeIntegration: false,
+          webSecurity: true,
+          enableRemoteModule: false,
+          contextIsolation: true,
+          preload: 'preload',
+        },
+        resizable: false,
+        title: '<%= name %>'
+      }
+    })
+  }
+}
