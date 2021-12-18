@@ -1,0 +1,2 @@
+(()=>{var e={298:e=>{"use strict";e.exports=require("electron")}},t={};function r(o){var i=t[o];if(void 0!==i)return i.exports;var n=t[o]={exports:{}};return e[o](n,n.exports,r),n.exports}(()=>{const{BrowserWindow:e,app:t}=r(298),o=(t.isPackaged,()=>{new e({width:800,height:600,title:"Boilerplate"}).loadFile("index.html")});t.whenReady().then((()=>{o()})),t.on("window-all-closed",(()=>{"darwin"!==process.platform&&t.quit()})),t.on("activate",(()=>{0===e.getAllWindows().length&&o()}))})()})();
+//# sourceMappingURL=main.js.map
