@@ -10,7 +10,6 @@ const devConfig = {
     devServer: {
         port: 3000,
         static: "../dist",
-        //open: true,
         hot: true,
     },
     devtool: 'eval-source-map',

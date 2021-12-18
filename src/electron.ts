@@ -1,5 +1,5 @@
-const { BrowserWindow, app, ipcMain, Notification } = require('electron');
-const path = require('path');
+import { BrowserWindow, app, ipcMain, Notification } from 'electron';
+import path from 'path';
 
 const main = () => {
   let win = new BrowserWindow({ 
@@ -8,7 +8,6 @@ const main = () => {
     webPreferences: {
       nodeIntegration: false,
       webSecurity: true,
-      //enableRemoteModule: false,
       contextIsolation: true,
       preload: path.resolve(__dirname, 'preload.js'),
     },
@@ -38,6 +37,10 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('notify', (_, message) => {
-  new Notification({title: 'Notifiation', body: message}).show();
+ipcMain.on('notify', (_: any, message: string) => {
+  new Notification({
+    title: 'Notifiation', 
+    body: message
+  })
+    .show();
 });

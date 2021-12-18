@@ -4,7 +4,7 @@ const path = require('path');
 
 /** @type { import('webpack').Configuration } */
 module.exports = {
-    entry: './src/renderer/index.js',
+    entry: './src/renderer/index.tsx',
     output: {
         path: path.resolve(__dirname, '../../dist'),
         filename: "[name].[contenthash].js",
@@ -13,15 +13,20 @@ module.exports = {
     module: {
         rules: [{
             use: 'babel-loader',
-            test: /.(js|jsx)$/,
+            test: /.(js|jsx|ts|tsx)$/,
             exclude: /node_modules/
         }, {
             type: 'asset',
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        }, 
+        {
+            test: /.(ts|tsx)$/,
+            include: /src/,
+            use: [{ loader: 'ts-loader' }]
         }]
     },
     resolve: {
-        extensions: [".js", ".jsx", ".json"]
+        extensions: [".js", ".jsx", ".json", ".ts", ".tsx"]
     },
     plugins: [
         new HtmlWebpackPlugin({

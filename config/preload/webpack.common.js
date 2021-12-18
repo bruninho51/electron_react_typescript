@@ -3,7 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 /** @type { import('webpack').Configuration } */
 module.exports = {
-  entry: './src/preload.js',
+  entry: './src/preload.ts',
   target: 'electron-main',
   node: {
     __dirname: false,
@@ -12,7 +12,7 @@ module.exports = {
     alias: {
       ['@']: path.resolve(__dirname, 'src')
     },
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [{

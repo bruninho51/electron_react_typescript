@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 import './App.css';
 import './App.scss';
 import logo from './logo.svg';
@@ -14,7 +13,6 @@ function App() {
             </h1>
             <div>
                 <button onClick={() => {
-                    console.log(electron)
                     electron.notificationApi.sendNotification('My custom notification!');
                 }}>Notify Test</button>
                 <label htmlFor='name'>Test HMR: </label>
