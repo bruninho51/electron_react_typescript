@@ -10,10 +10,14 @@ function App() {
     return (
         <div className='app'>
             <h1>
-                Hola React!! <img src={logo} width="25" alt="react logo" />
+                Hello World! <img src={logo} width="25" alt="react logo" />
             </h1>
             <div>
-                <label htmlFor='name'>Nombre: </label>
+                <button onClick={() => {
+                    console.log(electron)
+                    electron.notificationApi.sendNotification('My custom notification!');
+                }}>Notify Test</button>
+                <label htmlFor='name'>Test HMR: </label>
                 <input
                     id='name'
                     type='text'

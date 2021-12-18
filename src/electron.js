@@ -1,9 +1,19 @@
-const { BrowserWindow, app } = require('electron');
-
-const isDev = !app.isPackaged;
+const { BrowserWindow, app, ipcMain, Notification } = require('electron');
+const path = require('path');
 
 const main = () => {
-  let win = new BrowserWindow({ width: 800, height: 600, title: 'Boilerplate' });
+  let win = new BrowserWindow({ 
+    width: 1200,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: false,
+      webSecurity: true,
+      //enableRemoteModule: false,
+      contextIsolation: true,
+      preload: path.resolve(__dirname, 'preload.js'),
+    },
+    title: 'Explore English'
+  });
 
   if (process.env.NODE_ENV == 'production') {
     win.loadFile('index.html');
@@ -26,4 +36,8 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     main();
   }
+});
+
+ipcMain.on('notify', (_, message) => {
+  new Notification({title: 'Notifiation', body: message}).show();
 });

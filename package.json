@@ -8,9 +8,11 @@
     "build": "run-p build:*",
     "build:main": "webpack --config config/electron/webpack.prod.js",
     "build:renderer": "webpack --config config/renderer/webpack.prod.js",
+    "build:preload": "webpack --config config/preload/webpack.prod.js",
     "start": "electron dist/main.js --node-env=production",
     "dev": "run-p dev:*",
     "dev:main": "webpack --config config/electron/webpack.dev.js --watch",
+    "dev:preload": "webpack --config config/preload/webpack.prod.js --watch",
     "dev:server": "webpack serve --config config/renderer/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

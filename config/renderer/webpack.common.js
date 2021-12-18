@@ -4,7 +4,7 @@ const path = require('path');
 
 /** @type { import('webpack').Configuration } */
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/renderer/index.js',
     output: {
         path: path.resolve(__dirname, '../../dist'),
         filename: "[name].[contenthash].js",
